@@ -1,8 +1,10 @@
 import express from 'express';
 import { getGroqTarotReading } from './ai.js';
+import dotenv from 'dotenv';
+dotenv.config();
  
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.get("/tarot/reading", async (req, res) => {
     const { firstCard, secondCard, thirdCard, question } = req.query;
