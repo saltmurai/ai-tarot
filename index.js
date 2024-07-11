@@ -8,6 +8,12 @@ const app = express();
 app.use(cors());
 const port = process.env.PORT || 3000;
 
+app.get("/ping", (req, res) => {
+    res.send({
+        status: "ok",
+    });
+});
+
 app.get("/tarot/reading", async (req, res) => {
     const { first, second, third, question } = req.query;
     const response = await getGroqTarotReading(first, second, third, question);
